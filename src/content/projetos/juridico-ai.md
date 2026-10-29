@@ -5,7 +5,7 @@ resumo: 'TODO — escrever uma descrição curta deste projeto.'
 tipo: 'codigo-aberto'
 # TODO: preencher as tecnologias, ex.: ['Python', 'FastAPI', 'Docker']
 tags: []
-ordem: 4
+ordem: 5
 # TODO: descomentar a linha abaixo e colocar a URL do repositório no GitHub
 # repo: 'https://github.com/SEU-USUARIO/juridico-ai'
 # TODO: se houver demo online, descomentar e colocar a URL. Se não houver, deixar comentado.
