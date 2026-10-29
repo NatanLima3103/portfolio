@@ -18,14 +18,11 @@ export const site = {
   // Formação, exibida na seção Sobre
   formacao: 'Sistemas de Informação — Universidade Positivo',
 
-  // TODO: preencher com seu e-mail real
-  email: 'seu-email@exemplo.com',
+  email: 'natanjonatan3103@gmail.com',
 
   links: {
-    // TODO: preencher com a URL do seu perfil do LinkedIn
-    linkedin: 'https://www.linkedin.com/in/SEU-USUARIO',
-    // TODO: preencher com a URL do seu perfil do GitHub
-    github: 'https://github.com/SEU-USUARIO',
+    linkedin: 'https://www.linkedin.com/in/natan-lima-716652397/',
+    github: 'https://github.com/NatanLima3103',
   },
 
   // Arquivos em public/ — veja o README
