@@ -42,11 +42,7 @@ O acesso é autenticado, com senhas armazenadas como hash **bcrypt**.
 
 ## Arquitetura
 
-<!-- TODO: diagrama de arquitetura.
-     1. Salve a imagem em public/projetos/triagem-intimacoes.png
-     2. Descomente a linha abaixo (o texto entre [] e o alt, usado por leitores de tela)
--->
-<!-- ![Diagrama do fluxo de importação: planilha, normalização, verificação de duplicatas e fila ordenada](/projetos/triagem-intimacoes.png) -->
+![Diagrama do fluxo de importação: planilha, normalização, verificação de duplicatas e fila ordenada](/projetos/triagem-intimacoes.svg)
 
 Aplicação única e deliberadamente simples:
 

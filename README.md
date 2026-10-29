@@ -55,6 +55,7 @@ Para parar o servidor: `Ctrl + C` no terminal.
 | `npm run preview` | Serve a pasta `dist/` para conferir o resultado do build |
 | `npm run check` | Verifica tipos e erros nos arquivos `.astro` e `.ts` |
 | `npm run verificar` | Roda `check` + `build` — use antes de dar `git push` |
+| `npm run og` | Regenera `public/og-image.png` a partir de `src/data/site.ts` |
 
 > O build baixa as fontes Inter e JetBrains Mono do Google na primeira vez e guarda em
 > cache. Por isso o primeiro build precisa de internet; os próximos não.
@@ -93,10 +94,12 @@ Tudo que está em `public/` é copiado para a raiz do site sem nenhum processame
 | --- | --- | --- |
 | `public/curriculo.pdf` | Botão "Baixar currículo" do hero | O botão aparece, mas dá 404 |
 | `public/foto.jpg` | Foto da seção "Sobre" (quadrada, ~600×600px) | Aparece um monograma "NJ" no lugar |
-| `public/og-image.png` | Imagem da prévia ao compartilhar o link (1200×630px) | A prévia no WhatsApp/LinkedIn fica sem imagem |
-| `public/projetos/*.png` | Diagramas de arquitetura dos projetos | A seção "Arquitetura" fica só com texto |
+| `public/projetos/*.png` ou `*.svg` | Diagramas de arquitetura dos projetos | A seção "Arquitetura" fica só com texto |
 
-O `public/favicon.svg` já está pronto.
+Já estão prontos: `public/favicon.svg`, os diagramas dos três estudos de caso em
+`public/projetos/*.svg` e a `public/og-image.png` (prévia ao compartilhar o link, 1200×630px).
+A OG image é gerada por `scripts/gerar-og-image.mjs` com o nome, o título e a stack de
+`src/data/site.ts` — se mudar algum deles, rode `npm run og` e faça commit da imagem nova.
 
 ---
 
@@ -324,8 +327,10 @@ PortfolioNatan/
 │   ├── favicon.svg
 │   ├── curriculo.pdf            você coloca
 │   ├── foto.jpg                 você coloca
-│   ├── og-image.png             você coloca
-│   └── projetos/                diagramas de arquitetura
+│   ├── og-image.png             gerada por npm run og
+│   └── projetos/                diagramas de arquitetura (SVG)
+├── scripts/
+│   └── gerar-og-image.mjs       gera a og-image.png
 ├── src/
 │   ├── data/site.ts             nome, contatos, links e stack
 │   ├── content.config.ts        schema dos projetos (valida o frontmatter)

@@ -12,7 +12,7 @@ ordem: 4
 # demo: 'https://exemplo.vercel.app'
 periodo: '' # TODO: preencher o período (ex.: 2026)
 # Mude para true se quiser esconder o projeto do site enquanto não estiver pronto.
-rascunho: false
+rascunho: true
 ---
 
 <!-- ===================================================================

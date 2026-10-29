@@ -35,11 +35,7 @@ que falhou sem perder nada.
 
 ## Arquitetura
 
-<!-- TODO: diagrama de arquitetura.
-     1. Salve a imagem em public/projetos/certidoes.png
-     2. Descomente a linha abaixo (o texto entre [] e o alt, usado por leitores de tela)
--->
-<!-- ![Diagrama da arquitetura: gateway FastAPI publicando na fila do RabbitMQ e workers por portal consumindo dela](/projetos/certidoes.png) -->
+![Diagrama da arquitetura: gateway FastAPI publicando na fila do RabbitMQ e workers por portal consumindo dela](/projetos/certidoes.svg)
 
 O fluxo é o seguinte:
 

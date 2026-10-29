@@ -29,11 +29,7 @@ funcionam com requisições HTTP simples.
 
 ## Arquitetura
 
-<!-- TODO: diagrama de arquitetura.
-     1. Salve a imagem em public/projetos/monitor-processos.png
-     2. Descomente a linha abaixo (o texto entre [] e o alt, usado por leitores de tela)
--->
-<!-- ![Diagrama do fluxo: agendador, coletor Playwright e comparação com o estado anterior](/projetos/monitor-processos.png) -->
+![Diagrama do fluxo: agendador, coletor Playwright e comparação com o estado anterior](/projetos/monitor-processos.svg)
 
 Estrutura em três camadas:
 
