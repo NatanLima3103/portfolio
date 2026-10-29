@@ -208,6 +208,8 @@ remove do HTML publicado, então eles servem como anotação só para quem edita
 O texto entre `[` e `]` é o **alt**, que leitores de tela anunciam. Descreva o que o
 diagrama mostra, não escreva só "diagrama".
 
+Situação dos diagramas atuais e por que os SVGs têm fundo próprio: [docs/diagramas.md](docs/diagramas.md).
+
 ### 5. Confira
 
 ```powershell

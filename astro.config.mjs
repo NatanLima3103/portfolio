@@ -5,9 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 import { satteri } from '@astrojs/markdown-satteri';
 import { removerComentariosHtml } from './src/plugins/remover-comentarios.mjs';
 
-// TODO: trocar pela URL final do Vercel (ex.: https://natanjonatan.vercel.app)
+// URL de produção no Vercel.
 // Precisa estar correta para o sitemap, as URLs canônicas e o Open Graph.
-const SITE = 'https://natan-portfolio.vercel.app';
+const SITE = 'https://natanlima.vercel.app';
 
 // https://astro.build/config
 export default defineConfig({
