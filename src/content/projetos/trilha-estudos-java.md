@@ -1,7 +1,6 @@
 ---
 titulo: 'Trilha de estudos em Java'
-# O número de commits é um retrato de out. 2026 — atualize de tempos em tempos
-resumo: 'Repositório de exercícios do curso de Java da Cod3r (77h, em andamento), com 355 commits cobrindo fundamentos, orientação a objetos, coleções e lambdas.'
+resumo: 'Repositório de exercícios do curso de Java da Cod3r (77h, em andamento), com 350+ commits cobrindo fundamentos, orientação a objetos, coleções e lambdas.'
 tipo: 'codigo-aberto'
 tags: ['Java', 'IntelliJ IDEA', 'Orientação a objetos', 'Coleções', 'Lambdas']
 ordem: 4
