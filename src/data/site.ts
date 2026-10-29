@@ -9,7 +9,7 @@ export const site = {
   titulo: 'Desenvolvedor Backend & Automação',
   // Frase do hero (1 linha, aparece embaixo do título)
   tagline:
-    'Construo serviços e automações em Python que resolvem processos repetitivos — de microsserviços com filas a deploy em VPS Linux.',
+    'Construo serviços e automações em Python, de microsserviços com filas a deploy em VPS Linux, e hoje estou levando essa base para o ecossistema Java.',
   // Usada na meta description e no Open Graph
   descricao:
     'Portfólio de Natan Jonatan de Lima, desenvolvedor backend na Santos Silveiro Advogados. Python em produção, com especialização em Java e Spring Boot.',
