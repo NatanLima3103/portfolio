@@ -1,0 +1,97 @@
+---
+// Botão de tema. O estado inicial é aplicado pelo script inline do BaseLayout,
+// antes da primeira pintura, para não haver flash.
+---
+
+<button
+  id="botao-tema"
+  type="button"
+  class="grid size-9 shrink-0 place-items-center rounded-lg border border-borda bg-surface text-muted transition-colors hover:border-borda-forte hover:text-texto"
+  aria-label="Alternar para o tema claro"
+  title="Alternar tema"
+>
+  {/* Lua: visível no escuro (clicar vai para o claro) */}
+  <svg
+    class="size-[18px] icone-escuro"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+  </svg>
+
+  {/* Sol: visível no claro (clicar vai para o escuro) */}
+  <svg
+    class="size-[18px] icone-claro"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4m0-14.2-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+  </svg>
+</button>
+
+<style>
+  .icone-claro {
+    display: none;
+  }
+
+  :global(:root[data-theme='light']) .icone-escuro {
+    display: none;
+  }
+
+  :global(:root[data-theme='light']) .icone-claro {
+    display: block;
+  }
+</style>
+
+<script>
+  const botao = document.getElementById('botao-tema');
+  const raiz = document.documentElement;
+  const metaCor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+
+  const CORES_BARRA = { claro: '#ffffff', escuro: '#0b0f14' };
+
+  function sincronizar() {
+    const estaClaro = raiz.dataset.theme === 'light';
+
+    botao?.setAttribute(
+      'aria-label',
+      estaClaro ? 'Alternar para o tema escuro' : 'Alternar para o tema claro',
+    );
+
+    // Barra do navegador no mobile acompanha o tema escolhido, não o do sistema
+    metaCor?.setAttribute('content', estaClaro ? CORES_BARRA.claro : CORES_BARRA.escuro);
+  }
+
+  botao?.addEventListener('click', () => {
+    const vaiParaClaro = raiz.dataset.theme !== 'light';
+
+    if (vaiParaClaro) {
+      raiz.dataset.theme = 'light';
+    } else {
+      delete raiz.dataset.theme;
+    }
+
+    // Pode lançar em modo privado ou com armazenamento bloqueado:
+    // o tema continua funcionando, só não é lembrado.
+    try {
+      localStorage.setItem('tema', vaiParaClaro ? 'claro' : 'escuro');
+    } catch (e) {
+      /* preferência não persistida */
+    }
+
+    sincronizar();
+  });
+
+  sincronizar();
+</script>

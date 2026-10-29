@@ -1,0 +1,21 @@
+---
+interface Props {
+  id: string;
+  titulo: string;
+  /** Índice mostrado em monoespaçada antes do título (ex.: '01') */
+  indice: string;
+  class?: string;
+}
+
+const { id, titulo, indice, class: classe = '' } = Astro.props;
+---
+
+<section id={id} class:list={['container-site scroll-mt-24 py-16 sm:py-24', classe]}>
+  <h2 class="mb-8 flex items-center gap-3 text-2xl font-semibold sm:mb-10 sm:text-3xl">
+    <span class="font-mono text-sm font-normal text-accent" aria-hidden="true">{indice}</span>
+    {titulo}
+    <span class="ml-1 h-px flex-1 bg-borda" aria-hidden="true"></span>
+  </h2>
+
+  <slot />
+</section>

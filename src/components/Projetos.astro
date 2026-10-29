@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import ProjetoCard from './ProjetoCard.astro';
+import Reveal from './Reveal.astro';
+
+const projetos = (await getCollection('projetos', ({ data }) => !data.rascunho)).sort(
+  (a, b) => a.data.ordem - b.data.ordem,
+);
+---
+
+<p class="-mt-2 mb-8 max-w-2xl text-base text-muted">
+  Os estudos de caso são projetos profissionais sem código público — a página de cada um
+  descreve o problema, a arquitetura e as decisões técnicas.
+</p>
+
+<ul class="grid gap-5 sm:grid-cols-2">
+  {
+    projetos.map((projeto, i) => (
+      <Reveal as="li" delay={i * 70} class="h-full">
+        <ProjetoCard projeto={projeto} />
+      </Reveal>
+    ))
+  }
+</ul>

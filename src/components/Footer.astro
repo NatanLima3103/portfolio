@@ -1,0 +1,14 @@
+---
+import { site } from '../data/site';
+
+const ano = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-borda py-8">
+  <div
+    class="container-site flex flex-col items-center justify-between gap-3 text-sm text-muted sm:flex-row"
+  >
+    <p>© {ano} {site.nome}</p>
+    <p class="font-mono text-xs">Feito com Astro e Tailwind CSS</p>
+  </div>
+</footer>

@@ -1,0 +1,15 @@
+---
+interface Props {
+  /** Atraso da animação em ms, para escalonar itens de uma lista */
+  delay?: number;
+  /** Tag renderizada (padrão: div) */
+  as?: 'div' | 'li' | 'section' | 'article';
+  class?: string;
+}
+
+const { delay = 0, as: Tag = 'div', class: classe = '' } = Astro.props;
+---
+
+<Tag class:list={['reveal', classe]} style={delay ? `--reveal-delay:${delay}ms` : undefined}>
+  <slot />
+</Tag>

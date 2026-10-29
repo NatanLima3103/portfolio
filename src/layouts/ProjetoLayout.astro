@@ -1,0 +1,100 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Badge from '../components/Badge.astro';
+import { site } from '../data/site';
+
+interface Props {
+  projeto: CollectionEntry<'projetos'>;
+}
+
+const { projeto } = Astro.props;
+const { titulo, resumo, tipo, tags, repo, demo, periodo } = projeto.data;
+
+const rotuloTipo = tipo === 'codigo-aberto' ? 'Código aberto' : 'Estudo de caso';
+---
+
+<BaseLayout titulo={`${titulo} — ${site.nome}`} descricao={resumo}>
+  <article class="container-site py-12 sm:py-16">
+    <nav aria-label="Trilha de navegação" class="mb-8 text-sm">
+      <a href="/#projetos" class="rounded text-muted transition-colors hover:text-accent">
+        Projetos
+      </a>
+      <span class="mx-2 text-borda-forte" aria-hidden="true">/</span>
+      <span class="text-texto">{titulo}</span>
+    </nav>
+
+    <header class="max-w-3xl">
+      <div class="flex flex-wrap items-center gap-3">
+        <Badge variante={tipo === 'codigo-aberto' ? 'destaque' : 'tecnologia'}>{rotuloTipo}</Badge>
+        {periodo && <span class="font-mono text-xs text-muted">{periodo}</span>}
+      </div>
+
+      <h1 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{titulo}</h1>
+
+      <p class="mt-4 text-base leading-relaxed text-muted sm:text-lg">{resumo}</p>
+
+      {
+        tags.length > 0 && (
+          <ul class="mt-6 flex flex-wrap gap-1.5">
+            {tags.map((tag) => (
+              <li>
+                <Badge>{tag}</Badge>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      {
+        (repo || demo) && (
+          <div class="mt-6 flex flex-wrap gap-3">
+            {repo && (
+              <a
+                href={repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-lg border border-borda bg-surface px-4 py-2 text-sm font-medium transition-colors hover:border-borda-forte hover:bg-surface-2"
+              >
+                Ver código no GitHub ↗
+              </a>
+            )}
+            {demo && (
+              <a
+                href={demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-contrast transition-colors hover:bg-accent-hover"
+              >
+                Ver demo ↗
+              </a>
+            )}
+          </div>
+        )
+      }
+
+      {
+        tipo === 'estudo-de-caso' && (
+          <p class="mt-6 rounded-lg border border-borda bg-surface p-4 text-sm leading-relaxed text-muted">
+            Projeto profissional desenvolvido no ambiente de trabalho. O código não é público e
+            nenhuma informação de cliente, credencial ou endereço interno é descrita aqui — o
+            texto trata apenas das decisões de arquitetura e engenharia.
+          </p>
+        )
+      }
+    </header>
+
+    <div class="conteudo mt-12 max-w-3xl">
+      <slot />
+    </div>
+
+    <footer class="mt-16 max-w-3xl border-t border-borda pt-8">
+      <a
+        href="/#projetos"
+        class="inline-flex items-center gap-2 rounded text-sm font-medium text-accent transition-colors hover:text-accent-hover"
+      >
+        ← Voltar para os projetos
+      </a>
+    </footer>
+  </article>
+</BaseLayout>

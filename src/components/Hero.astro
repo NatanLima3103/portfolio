@@ -1,0 +1,72 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="relative overflow-hidden">
+  {/* Brilho de fundo, puramente decorativo */}
+  <div
+    class="pointer-events-none absolute inset-x-0 -top-40 h-80 bg-[radial-gradient(45rem_22rem_at_50%_100%,var(--c-accent-soft),transparent)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="container-site relative py-20 sm:py-28 lg:py-36">
+    <p class="mb-5 inline-flex items-center gap-2 font-mono text-xs text-muted sm:text-[13px]">
+      <span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+      {site.cargoAtual}
+    </p>
+
+    <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+      {site.nome}
+    </h1>
+
+    <p class="mt-3 text-xl font-medium text-accent sm:mt-4 sm:text-2xl">
+      {site.titulo}
+    </p>
+
+    <p class="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+      {site.tagline}
+    </p>
+
+    <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+      <a
+        href="#projetos"
+        class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-accent-contrast transition-colors hover:bg-accent-hover"
+      >
+        Ver projetos
+        <svg
+          class="size-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 5v14M19 12l-7 7-7-7"></path>
+        </svg>
+      </a>
+
+      <a
+        href={site.curriculo}
+        download
+        class="inline-flex items-center justify-center gap-2 rounded-lg border border-borda bg-surface px-5 py-3 text-sm font-semibold transition-colors hover:border-borda-forte hover:bg-surface-2"
+      >
+        Baixar currículo
+        <svg
+          class="size-4 text-muted"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

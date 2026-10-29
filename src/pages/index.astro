@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Secao from '../components/Secao.astro';
+import Sobre from '../components/Sobre.astro';
+import Stack from '../components/Stack.astro';
+import Projetos from '../components/Projetos.astro';
+import Contato from '../components/Contato.astro';
+import Reveal from '../components/Reveal.astro';
+import { site } from '../data/site';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.nome,
+  jobTitle: site.titulo,
+  email: `mailto:${site.email}`,
+  url: Astro.site?.href,
+  sameAs: [site.links.linkedin, site.links.github],
+};
+---
+
+<BaseLayout titulo={`${site.nome} — ${site.titulo}`} comNavegacao>
+  <Hero />
+
+  <Secao id="sobre" indice="01" titulo="Sobre">
+    <Reveal>
+      <Sobre />
+    </Reveal>
+  </Secao>
+
+  <Secao id="stack" indice="02" titulo="Stack">
+    <Stack />
+  </Secao>
+
+  <Secao id="projetos" indice="03" titulo="Projetos">
+    <Projetos />
+  </Secao>
+
+  <Secao id="contato" indice="04" titulo="Contato">
+    <Contato />
+  </Secao>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</BaseLayout>

@@ -1,0 +1,255 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   Tokens de cor
+   O tema ESCURO é o padrão (vale até sem JavaScript).
+   O tema claro só entra quando <html data-theme="light">.
+   ============================================================ */
+:root {
+  color-scheme: dark;
+
+  --c-bg: #0b0f14;
+  --c-surface: #111a22;
+  --c-surface-2: #16212b;
+  --c-border: #1e2b36;
+  --c-border-strong: #2b3b49;
+  --c-text: #e6edf3;
+  --c-muted: #93a4b3;
+  --c-accent: #2dd4bf;
+  --c-accent-hover: #5ee7d7;
+  --c-accent-contrast: #042f2a;
+  --c-accent-soft: rgb(45 212 191 / 0.12);
+  --c-accent-ring: rgb(45 212 191 / 0.45);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --c-bg: #ffffff;
+  --c-surface: #f6f8fa;
+  --c-surface-2: #eef2f6;
+  --c-border: #e2e8ee;
+  --c-border-strong: #cdd6df;
+  --c-text: #0d1117;
+  --c-muted: #55606b;
+  --c-accent: #0f766e;
+  --c-accent-hover: #0b5d57;
+  --c-accent-contrast: #ffffff;
+  --c-accent-soft: rgb(15 118 110 / 0.1);
+  --c-accent-ring: rgb(15 118 110 / 0.45);
+}
+
+/* `inline` faz o Tailwind gerar var(--c-*) em vez de congelar o valor,
+   então as mesmas classes funcionam nos dois temas. */
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-borda: var(--c-border);
+  --color-borda-forte: var(--c-border-strong);
+  --color-texto: var(--c-text);
+  --color-muted: var(--c-muted);
+  --color-accent: var(--c-accent);
+  --color-accent-hover: var(--c-accent-hover);
+  --color-accent-contrast: var(--c-accent-contrast);
+  --color-accent-soft: var(--c-accent-soft);
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--c-bg);
+    color: var(--c-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-wrap: pretty;
+  }
+
+  /* Compensa o header fixo ao navegar por âncora */
+  :target,
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--c-accent);
+    color: var(--c-accent-contrast);
+  }
+}
+
+/* ============================================================
+   Utilitários próprios
+   ============================================================ */
+@utility container-site {
+  width: 100%;
+  max-width: 68rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* Fade-in ao rolar. Sem JS (ou com motion reduzido) o conteúdo
+   já aparece visível — nunca fica invisível por acidente. */
+@layer components {
+  .reveal {
+    opacity: 1;
+  }
+
+  html.js .reveal {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  html.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.js .reveal,
+  html.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   Conteúdo Markdown das páginas de projeto
+   ============================================================ */
+@layer components {
+  .conteudo {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--c-text);
+  }
+
+  .conteudo > * + * {
+    margin-top: 1.25rem;
+  }
+
+  .conteudo h2 {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--c-border);
+    font-size: 1.375rem;
+    font-weight: 600;
+  }
+
+  .conteudo > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .conteudo h3 {
+    margin-top: 2rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--c-accent);
+  }
+
+  .conteudo ul,
+  .conteudo ol {
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .conteudo ul {
+    list-style: disc;
+  }
+
+  .conteudo ol {
+    list-style: decimal;
+  }
+
+  .conteudo li::marker {
+    color: var(--c-muted);
+  }
+
+  .conteudo strong {
+    color: var(--c-text);
+    font-weight: 600;
+  }
+
+  .conteudo a {
+    color: var(--c-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .conteudo code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background-color: var(--c-surface-2);
+    border: 1px solid var(--c-border);
+    border-radius: 0.3rem;
+    padding: 0.1rem 0.35rem;
+  }
+
+  .conteudo pre {
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+  }
+
+  .conteudo pre code {
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+
+  .conteudo blockquote {
+    border-left: 3px solid var(--c-accent);
+    padding-left: 1rem;
+    color: var(--c-muted);
+  }
+
+  .conteudo img {
+    border-radius: 0.75rem;
+    border: 1px solid var(--c-border);
+  }
+}
