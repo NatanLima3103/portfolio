@@ -8,11 +8,18 @@ import Reveal from './Reveal.astro';
   {
     stack.map((grupo, i) => (
       <Reveal delay={i * 60}>
-        <h3 class="font-mono text-xs tracking-wider text-muted uppercase">{grupo.categoria}</h3>
+        <h3
+          class:list={[
+            'font-mono text-xs tracking-wider uppercase',
+            grupo.estudando ? 'text-accent' : 'text-muted',
+          ]}
+        >
+          {grupo.categoria}
+        </h3>
         <ul class="mt-3 flex flex-wrap gap-2">
           {grupo.itens.map((item) => (
             <li>
-              <Badge>{item}</Badge>
+              <Badge variante={grupo.estudando ? 'contorno' : 'tecnologia'}>{item}</Badge>
             </li>
           ))}
         </ul>

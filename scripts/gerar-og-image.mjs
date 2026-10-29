@@ -53,8 +53,11 @@ function h(type, props, ...children) {
   return { type, props: { ...props, children: children.length === 1 ? children[0] : children } };
 }
 
-// Primeiro item de cada categoria da stack, até 5
-const destaques = stack.map((grupo) => grupo.itens[0]).slice(0, 5);
+// Primeiro item de cada categoria da stack, até 5 (o que está em estudo fica de fora)
+const destaques = stack
+  .filter((grupo) => !grupo.estudando)
+  .map((grupo) => grupo.itens[0])
+  .slice(0, 5);
 
 const iniciais = site.nomeCurto
   .split(' ')

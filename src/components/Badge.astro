@@ -1,7 +1,10 @@
 ---
 interface Props {
-  /** 'tecnologia' = badge neutra | 'destaque' = badge na cor de destaque */
-  variante?: 'tecnologia' | 'destaque';
+  /**
+   * 'tecnologia' = badge neutra | 'destaque' = badge na cor de destaque
+   * 'contorno' = só a borda na cor de destaque, sem preenchimento
+   */
+  variante?: 'tecnologia' | 'destaque' | 'contorno';
 }
 
 const { variante = 'tecnologia' } = Astro.props;
@@ -9,6 +12,7 @@ const { variante = 'tecnologia' } = Astro.props;
 const estilos = {
   tecnologia: 'border-borda bg-surface-2 text-muted',
   destaque: 'border-transparent bg-accent-soft text-accent',
+  contorno: 'border-accent bg-transparent text-accent',
 };
 ---
 
