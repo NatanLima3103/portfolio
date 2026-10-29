@@ -4,7 +4,7 @@ resumo: 'Automação em Playwright que acompanha o andamento de processos em por
 tipo: 'estudo-de-caso'
 tags: ['Python', 'Playwright', 'Docker']
 ordem: 2
-periodo: '' # TODO: preencher o período (ex.: 2025)
+periodo: '2026'
 ---
 
 ## Problema

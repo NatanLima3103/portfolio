@@ -4,7 +4,7 @@ resumo: 'Conjunto de microsserviços que automatiza a emissão de certidões em 
 tipo: 'estudo-de-caso'
 tags: ['Python', 'FastAPI', 'RabbitMQ', 'Docker', 'nodriver', 'Nginx']
 ordem: 1
-periodo: '' # TODO: preencher o período (ex.: '2025 — atual')
+periodo: '2026'
 ---
 
 ## Problema

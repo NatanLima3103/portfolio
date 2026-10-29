@@ -4,7 +4,7 @@ resumo: 'Ferramenta web interna que transforma planilhas de intimações em uma 
 tipo: 'estudo-de-caso'
 tags: ['Python', 'FastAPI', 'SQLite']
 ordem: 3
-periodo: '' # TODO: preencher o período (ex.: 2025)
+periodo: '2026'
 ---
 
 ## Problema
