@@ -1,10 +1,14 @@
 ---
 import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { site, sobre } from '../data/site';
 
 // A foto vive em public/, então o Astro não a processa. Verificamos a existência
 // em tempo de build para poder cair no monograma quando o arquivo não estiver lá.
-const caminhoFoto = new URL(`../../public${site.foto}`, import.meta.url);
+// O caminho parte da raiz do projeto (process.cwd()), e não de import.meta.url:
+// no build este componente é empacotado em outra pasta, e um caminho relativo a
+// ele apontaria para o lugar errado — a foto nunca seria encontrada.
+const caminhoFoto = join(process.cwd(), 'public', site.foto);
 const temFoto = existsSync(caminhoFoto);
 ---
 
